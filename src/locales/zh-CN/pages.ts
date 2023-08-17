@@ -1,5 +1,5 @@
 export default {
-  'pages.layouts.userLayout.title': 'Ant Design 是西湖区最具影响力的 Web 设计规范',
+  'pages.layouts.userLayout.title': 'Rwear',
   'pages.login.accountLogin.tab': '账户密码登录',
   'pages.login.accountLogin.errorMessage': '错误的用户名和密码(admin/ant.design)',
   'pages.login.failure': '登录失败，请重试！',
@@ -29,7 +29,7 @@ export default {
   'pages.searchTable.createForm.newRule': '新建规则',
   'pages.searchTable.updateForm.ruleConfig': '规则配置',
   'pages.searchTable.updateForm.basicConfig': '基本信息',
-  'pages.searchTable.updateForm.ruleName.nameLabel': '规则名称',
+
   'pages.searchTable.updateForm.ruleName.nameRules': '请输入规则名称！',
   'pages.searchTable.updateForm.ruleDesc.descLabel': '规则描述',
   'pages.searchTable.updateForm.ruleDesc.descPlaceholder': '请输入至少五个字符',
@@ -41,15 +41,15 @@ export default {
   'pages.searchTable.updateForm.schedulingPeriod.title': '设定调度周期',
   'pages.searchTable.updateForm.schedulingPeriod.timeLabel': '开始时间',
   'pages.searchTable.updateForm.schedulingPeriod.timeRules': '请选择开始时间！',
-  'pages.searchTable.titleDesc': '描述',
+
   'pages.searchTable.ruleName': '规则名称为必填项',
   'pages.searchTable.titleCallNo': '服务调用次数',
   'pages.searchTable.titleStatus': '状态',
-  'pages.searchTable.nameStatus.default': '关闭',
-  'pages.searchTable.nameStatus.running': '运行中',
+
+
   'pages.searchTable.nameStatus.online': '已上线',
   'pages.searchTable.nameStatus.abnormal': '异常',
-  'pages.searchTable.titleUpdatedAt': '上次调度时间',
+
   'pages.searchTable.exception': '请输入异常原因！',
   'pages.searchTable.titleOption': '操作',
   'pages.searchTable.config': '配置',
@@ -62,4 +62,31 @@ export default {
   'pages.searchTable.tenThousand': '万',
   'pages.searchTable.batchDeletion': '批量删除',
   'pages.searchTable.batchApproval': '批量审批',
+
+  'pages.searchTable.id': 'id',
+  'pages.searchTable.updateForm.ruleName.nameLabel': '接口名称',
+  'pages.searchTable.titleDesc': '描述',
+  'pages.searchTable.method': '请求方法',
+  'pages.searchTable.requestHeader': '请求头',
+  'pages.searchTable.responseHeader': '响应头',
+  'pages.searchTable.url': 'url',
+
+  'pages.searchTable.nameStatus.default': '关闭',
+  'pages.searchTable.nameStatus.running': '开启',
+
+  'pages.searchTable.createdAt': '创建时间',
+  'pages.searchTable.UpdatedAt': '更新时间',
 };
+//
+// createTime	string(date-time)
+// description	string
+// id	integer(int64)
+// isDelete	integer(int32)
+// method	string
+// name	string
+// requestHeader	string
+// responseHeader	string
+// status	integer(int32)
+// updateTime	string(date-time)
+// url	string
+// userId	integer(int64)

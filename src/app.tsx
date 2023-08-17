@@ -1,12 +1,9 @@
 import { Footer, Question, SelectLang, AvatarDropdown, AvatarName } from '@/components';
 import { LinkOutlined } from '@ant-design/icons';
-import type { Settings as LayoutSettings } from '@ant-design/pro-components';
 import { SettingDrawer } from '@ant-design/pro-components';
 import type { RunTimeLayoutConfig } from '@umijs/max';
 import { history, Link } from '@umijs/max';
-import defaultSettings from '../config/defaultSettings';
 import { requestConfig } from './requestConfig';
-import { currentUser as queryCurrentUser } from '@/services/ant-design-pro/api';
 import React from 'react';
 import {InitialState} from "@/typings";
 import {getLoginUserUsingGET} from "@/services/rapi-backend/userController";
@@ -17,7 +14,7 @@ const loginPath = '/user/login';
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<InitialState> {
-  //当页面首次加载时，获取全局要保存的数据，比如用户信息
+  //要做的事情： 当页面首次加载时，获取全局要保存的数据，比如用户信息
   const state: InitialState = {
     loginUser: undefined,
   }
@@ -37,20 +34,20 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
   return {
     actionsRender: () => [<Question key="doc" />, <SelectLang key="SelectLang" />],
     avatarProps: {
-      src: initialState?.loginUser?.avatar,
+      src: initialState?.loginUser?.userName,
       title: <AvatarName />,
       render: (_, avatarChildren) => {
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
       },
     },
     waterMarkProps: {
-      content: initialState?.currentUser?.name,
+      content: initialState?.loginUser?.userName,
     },
     footerRender: () => <Footer />,
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
+      if (!initialState?.loginUser && location.pathname !== loginPath) {
         history.push(loginPath);
       }
     },

@@ -107,7 +107,17 @@ const TableList: React.FC = () => {
    * */
   const intl = useIntl();
 
-  const columns: ProColumns<API.RuleListItem>[] = [
+  const columns: ProColumns<API.InterfaceInfo>[] = [
+    {
+      title: (
+        <FormattedMessage
+          id="pages.searchTable.id"
+          defaultMessage="id"
+        />
+      ),
+      dataIndex: 'id',
+      valueType: 'index',
+    },
     {
       title: (
         <FormattedMessage
@@ -116,23 +126,31 @@ const TableList: React.FC = () => {
         />
       ),
       dataIndex: 'name',
-      tip: 'The rule name is the unique key',
-      render: (dom, entity) => {
-        return (
-          <a
-            onClick={() => {
-              setCurrentRow(entity);
-              setShowDetail(true);
-            }}
-          >
-            {dom}
-          </a>
-        );
-      },
+      valueType: 'text',
     },
     {
       title: <FormattedMessage id="pages.searchTable.titleDesc" defaultMessage="Description" />,
       dataIndex: 'desc',
+      valueType: 'text',
+    },
+    {
+      title: <FormattedMessage id="pages.searchTable.url" defaultMessage="url" />,
+      dataIndex: 'url',
+      valueType: 'text',
+    },
+    {
+      title: <FormattedMessage id="pages.searchTable.method" defaultMessage="method" />,
+      dataIndex: 'method',
+      valueType: 'textarea',
+    },
+    {
+      title: <FormattedMessage id="pages.searchTable.requestHeader" defaultMessage="requestHeader" />,
+      dataIndex: 'requestHeader',
+      valueType: 'textarea',
+    },
+    {
+      title: <FormattedMessage id="pages.searchTable.responseHeader" defaultMessage="responseHeader" />,
+      dataIndex: 'responseHeader',
       valueType: 'textarea',
     },
     {
@@ -171,51 +189,31 @@ const TableList: React.FC = () => {
           ),
           status: 'Processing',
         },
-        2: {
-          text: (
-            <FormattedMessage id="pages.searchTable.nameStatus.online" defaultMessage="Online" />
-          ),
-          status: 'Success',
-        },
-        3: {
-          text: (
-            <FormattedMessage
-              id="pages.searchTable.nameStatus.abnormal"
-              defaultMessage="Abnormal"
-            />
-          ),
-          status: 'Error',
-        },
       },
     },
     {
       title: (
         <FormattedMessage
-          id="pages.searchTable.titleUpdatedAt"
-          defaultMessage="Last scheduled time"
+          id="pages.searchTable.createdAt"
+          defaultMessage="createdAt"
+        />
+      ),
+      sorter: true,
+      dataIndex: 'createdAt',
+      valueType: 'dateTime',
+
+    },
+    {
+      title: (
+        <FormattedMessage
+          id="pages.searchTable.UpdatedAt"
+          defaultMessage="updatedAt"
         />
       ),
       sorter: true,
       dataIndex: 'updatedAt',
       valueType: 'dateTime',
-      renderFormItem: (item, { defaultRender, ...rest }, form) => {
-        const status = form.getFieldValue('status');
-        if (`${status}` === '0') {
-          return false;
-        }
-        if (`${status}` === '3') {
-          return (
-            <Input
-              {...rest}
-              placeholder={intl.formatMessage({
-                id: 'pages.searchTable.exception',
-                defaultMessage: 'Please enter the reason for the exception!',
-              })}
-            />
-          );
-        }
-        return defaultRender(item);
-      },
+
     },
     {
       title: <FormattedMessage id="pages.searchTable.titleOption" defaultMessage="Operating" />,
