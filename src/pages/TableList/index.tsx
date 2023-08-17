@@ -15,6 +15,8 @@ import { Button, Drawer, Input, message } from 'antd';
 import React, { useRef, useState } from 'react';
 import type { FormValueType } from './components/UpdateForm';
 import UpdateForm from './components/UpdateForm';
+import {listInterfaceInfoByPageUsingGET} from "@/services/rapi-backend/interfaceInfoController";
+import {SortOrder} from "antd/lib/table/interface";
 
 /**
  * @en-US Add node
@@ -262,7 +264,18 @@ const TableList: React.FC = () => {
             <PlusOutlined /> <FormattedMessage id="pages.searchTable.new" defaultMessage="New" />
           </Button>,
         ]}
-        request={rule}
+        request={async (params, sort: Record<string, SortOrder>, filter: Record<string, (string | number)[] | null>) => {
+          const res = await listInterfaceInfoByPageUsingGET({
+            ...params
+          })
+          if(res?.data){
+            return  {
+              data: res?.data.records || [],
+              success: true,
+              total: res.total,
+            }
+          }
+        }}
         columns={columns}
         rowSelection={{
           onChange: (_, selectedRows) => {
