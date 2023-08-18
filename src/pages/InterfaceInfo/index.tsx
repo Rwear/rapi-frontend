@@ -1,22 +1,21 @@
-import { addRule, removeRule, rule, updateRule } from '@/services/ant-design-pro/api';
+import { addRule,removeRule,updateRule } from '@/services/ant-design-pro/api';
+import { listInterfaceInfoByPageUsingGET } from "@/services/rapi-backend/interfaceInfoController";
 import { PlusOutlined } from '@ant-design/icons';
-import type { ActionType, ProColumns, ProDescriptionsItemProps } from '@ant-design/pro-components';
+import type { ActionType,ProColumns,ProDescriptionsItemProps } from '@ant-design/pro-components';
 import {
-  FooterToolbar,
-  ModalForm,
-  PageContainer,
-  ProDescriptions,
-  ProFormText,
-  ProFormTextArea,
-  ProTable,
+FooterToolbar,
+ModalForm,
+PageContainer,
+ProDescriptions,
+ProFormText,
+ProFormTextArea,
+ProTable,
 } from '@ant-design/pro-components';
-import { FormattedMessage, useIntl } from '@umijs/max';
-import { Button, Drawer, Input, message } from 'antd';
-import React, { useRef, useState } from 'react';
+import { FormattedMessage,useIntl } from '@umijs/max';
+import { Button,Drawer,message } from 'antd';
+import React,{ useRef,useState } from 'react';
 import type { FormValueType } from './components/UpdateForm';
 import UpdateForm from './components/UpdateForm';
-import {listInterfaceInfoByPageUsingGET} from "@/services/rapi-backend/interfaceInfoController";
-import {SortOrder} from "antd/lib/table/interface";
 
 /**
  * @en-US Add node
@@ -264,10 +263,10 @@ const TableList: React.FC = () => {
             <PlusOutlined /> <FormattedMessage id="pages.searchTable.new" defaultMessage="New" />
           </Button>,
         ]}
-        request={async (params, sort: Record<string, SortOrder>, filter: Record<string, (string | number)[] | null>) => {
+        request={async (params, filter: Record<string, (string | number)[] | null>) => {
           const res = await listInterfaceInfoByPageUsingGET({
-            ...params
-          })
+            ...params,
+          });
           if(res?.data){
             return  {
               data: res?.data.records || [],

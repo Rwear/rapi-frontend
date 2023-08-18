@@ -22,12 +22,12 @@ export default [
       },
     ],
   },
-  {
-    path: '/welcome',
-    name: 'welcome',
-    icon: 'smile',
-    component: './Welcome',
-  },
+  // {
+  //   path: '/welcome',
+  //   name: 'welcome',
+  //   icon: 'smile',
+  //   component: './Welcome',
+  // },
   {
     path: '/admin',
     name: 'admin',
@@ -35,9 +35,15 @@ export default [
     access: 'canAdmin',
     routes: [
       {
-        path: '/admin',
-        redirect: '/admin/sub-page',
+        name: 'interface-manage',
+        icon: 'table',
+        path: '/admin/interface_info',
+        component: './InterfaceInfo',
       },
+      // {
+      //   path: '/admin',
+      //   redirect: '/admin/sub-page',
+      // },
       {
         path: '/admin/sub-page',
         name: 'sub-page',
@@ -45,16 +51,11 @@ export default [
       },
     ],
   },
-  {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
-  },
-  {
-    path: '/',
-    redirect: '/welcome',
-  },
+
+  // {
+  //   path: '/',
+  //   redirect: '/welcome',
+  // },
   {
     path: '*',
     layout: false,
