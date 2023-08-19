@@ -76,6 +76,8 @@ export default {
 
   'pages.searchTable.createdAt': '创建时间',
   'pages.searchTable.UpdatedAt': '更新时间',
+
+  'pages.searchTable.modify' :'修改',
 };
 //
 // createTime	string(date-time)
